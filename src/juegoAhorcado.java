@@ -19,12 +19,12 @@ public class juegoAhorcado {
         listaPalabras[1] = "lentes";
         listaPalabras[2] = "electrodomestico";
         listaPalabras[3] = "cancelado";
-        listaPalabras[4] = "Bolso";
-        listaPalabras[5] = "Irene";
+        listaPalabras[4] = "bolso";
+        listaPalabras[5] = "irene";
         listaPalabras[6] = "outfit";
         listaPalabras[7] = "alcohol";
         listaPalabras[8] = "descafeinado";
-        listaPalabras[9] = "Chistosa";
+        listaPalabras[9] = "chistosa";
 
         do {
             int aleatorio = escogerPalabra.nextInt(10);

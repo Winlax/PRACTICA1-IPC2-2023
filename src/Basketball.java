@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -15,95 +16,112 @@ public class Basketball {
         Scanner scanner = new Scanner(System.in);
         String jugador1,jugador2,turnos;
         int orden;
-        
-        System.out.println("Bienvenidos a basketball");
-        System.out.print("Ingrese el nombre de Jugador 1:  ");
-        jugador1 = scanner.nextLine();
-        System.out.print("Ingrese el nombre de Jugador 2:  ");
-        jugador2 = scanner.nextLine();
-        
-        orden = random.nextInt(2)+1;  //se calcula aleatoriamente quien inicia.
-           
-            if(orden ==1){    
-                System.out.println("El primer jugador sera "+jugador1);
-                System.out.println("El segundo jugador sera "+jugador2);
+        boolean activador = true;
+        int respuesta = 0;
+
+        do {
+
+
+            System.out.println("Bienvenidos a basketball");
+            System.out.print("Ingrese el nombre de Jugador 1:  ");
+            jugador1 = scanner.nextLine();
+            System.out.print("Ingrese el nombre de Jugador 2:  ");
+            jugador2 = scanner.nextLine();
+
+            orden = random.nextInt(2) + 1;  //se calcula aleatoriamente quien inicia.
+
+            if (orden == 1) {
+                System.out.println("El primer jugador sera " + jugador1);
+                System.out.println("El segundo jugador sera " + jugador2);
+            } else {
+                System.out.println("El primer jugador sera " + jugador2);
+                System.out.println("El segundo jugador sera " + jugador1);
             }
-            else{
-                System.out.println("El primer jugador sera "+jugador2);
-                System.out.println("El segundo jugador sera "+jugador1);
-            }            
-                System.out.print("Ingrese la cantidad de turnos ");   //se define la cantidad de turnos que tendrá el juego
-                turnos = scanner.nextLine();
-                int turno = Integer.parseInt(turnos);
-                turno = turno*2;
-                
-        while(turno > 0){    //Inicia la partida
-                        System.out.println("Queda "+turno+" turnos ");                
-                if(orden ==1){    // inica jugador 1
-                    if(turno%2==0){  // determina de quien es el turno
-                        System.out.println("Lanza: "+jugador1);
-                        System.out.println("Defiende: "+jugador2);
+            System.out.print("Ingrese la cantidad de turnos ");   //se define la cantidad de turnos que tendrá el juego
+            turnos = scanner.nextLine();
+            int turno = Integer.parseInt(turnos);
+            turno = turno * 2;
+
+            while (turno > 0) {    //Inicia la partida
+                System.out.println("Queda " + turno + " turnos ");
+                if (orden == 1) {    // inica jugador 1
+                    if (turno % 2 == 0) {  // determina de quien es el turno
+                        System.out.println("Lanza: " + jugador1);
+                        System.out.println("Defiende: " + jugador2);
                         lanzamientosJugador();
                         defensaJugador();
                         puntos();
                         faltas();
-                        System.out.println(jugador1+" anoto "+puntosTiroNormal+" puntos");
-                        System.out.println(jugador1+" anoto "+puntosTiroLibre+" puntos por falta");
-                        puntosJugador1 = puntosJugador1 + (puntosTiroNormal + puntosTiroLibre);                       
-                    }
-                    else{
-                        System.out.println("Lanza: "+jugador2);
-                        System.out.println("Defiende: "+jugador1);
+                        System.out.println(jugador1 + " anoto " + puntosTiroNormal + " puntos");
+                        System.out.println(jugador1 + " anoto " + puntosTiroLibre + " puntos por falta");
+                        puntosJugador1 = puntosJugador1 + (puntosTiroNormal + puntosTiroLibre);
+                    } else {
+                        System.out.println("Lanza: " + jugador2);
+                        System.out.println("Defiende: " + jugador1);
                         lanzamientosJugador();
                         defensaJugador();
                         puntos();
                         faltas();
-                        System.out.println(jugador2+" anoto "+puntosTiroNormal+" puntos");
-                        System.out.println(jugador2+" anoto "+puntosTiroLibre+" puntos por falta");
+                        System.out.println(jugador2 + " anoto " + puntosTiroNormal + " puntos");
+                        System.out.println(jugador2 + " anoto " + puntosTiroLibre + " puntos por falta");
                         puntosJugador2 = puntosJugador2 + (puntosTiroNormal + puntosTiroLibre);
-                    }                                     
-                }
-                else{   //Inicia jugador 2                   
-                    if(turno%2==0){  // determina de quien es el turno
-                        System.out.println("Lanza : "+jugador2);
-                        System.out.println("Defiende: "+jugador1);
-                        lanzamientosJugador();
-                        defensaJugador();
-                        puntos();
-                        faltas();
-                        System.out.println(jugador2+" anoto "+puntosTiroNormal+" puntos");
-                        System.out.println(jugador2+" anoto "+puntosTiroLibre+" puntos por falta");
-                        puntosJugador2 = puntosJugador2 + (puntosTiroNormal + puntosTiroLibre);                        
                     }
-                    else{
-                        System.out.println("Lanza : "+jugador1);
-                        System.out.println("Defiende: "+jugador2);
+                } else {   //Inicia jugador 2
+                    if (turno % 2 == 0) {  // determina de quien es el turno
+                        System.out.println("Lanza : " + jugador2);
+                        System.out.println("Defiende: " + jugador1);
                         lanzamientosJugador();
                         defensaJugador();
                         puntos();
                         faltas();
-                        System.out.println(jugador1+" anoto "+puntosTiroNormal+" puntos");
-                        System.out.println(jugador1+" anoto "+puntosTiroLibre+" puntos por falta");
+                        System.out.println(jugador2 + " anoto " + puntosTiroNormal + " puntos");
+                        System.out.println(jugador2 + " anoto " + puntosTiroLibre + " puntos por falta");
+                        puntosJugador2 = puntosJugador2 + (puntosTiroNormal + puntosTiroLibre);
+                    } else {
+                        System.out.println("Lanza : " + jugador1);
+                        System.out.println("Defiende: " + jugador2);
+                        lanzamientosJugador();
+                        defensaJugador();
+                        puntos();
+                        faltas();
+                        System.out.println(jugador1 + " anoto " + puntosTiroNormal + " puntos");
+                        System.out.println(jugador1 + " anoto " + puntosTiroLibre + " puntos por falta");
                         puntosJugador1 = puntosJugador1 + (puntosTiroNormal + puntosTiroLibre);
                     }
-                }   
-                System.out.println("Marcador");
-                System.out.println(jugador1+"     "+puntosJugador1);
-                System.out.println(jugador2+"     "+puntosJugador2);        
-                turno--;
-                if(turno == 0){  
-                    if(puntosJugador1 > puntosJugador2) {
-                        System.out.println("El ganador es "+jugador1);
-                    }                         
-                    if(puntosJugador2 > puntosJugador1){
-                        System.out.println("El ganador es "+jugador2);
-                    }
-                    if(puntosJugador1 == puntosJugador2){
-                        System.out.println("Es un empate");
-                    }                    
-                    
                 }
-        }   
+                System.out.println("Marcador");
+                System.out.println(jugador1 + "     " + puntosJugador1);
+                System.out.println(jugador2 + "     " + puntosJugador2);
+                turno--;
+                if (turno == 0) {
+                    if (puntosJugador1 > puntosJugador2) {
+                        System.out.println("El ganador es " + jugador1);
+                    }
+                    if (puntosJugador2 > puntosJugador1) {
+                        System.out.println("El ganador es " + jugador2);
+                    }
+                    if (puntosJugador1 == puntosJugador2) {
+                        System.out.println("Es un empate");
+                    }
+
+                }
+
+            }
+
+            do try {
+                activador = false;
+                System.out.println("Desea volver a Jugar? (1)SI (0)NO");
+                respuesta = scanner.nextInt();
+
+                if (respuesta == 0)
+                    System.out.println("-> Regresando a menu principal <-");
+            } catch (InputMismatchException e) {
+                System.out.println("# # # ERROR, Debe ingresar una opcion Valida...");
+                scanner.next();
+                activador = true;
+
+            } while (activador);
+        }   while (respuesta != 0);
          
          
      }

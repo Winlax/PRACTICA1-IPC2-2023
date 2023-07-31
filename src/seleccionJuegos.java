@@ -42,20 +42,14 @@ public class seleccionJuegos {
 
             juegoAhorcado juego1 = new juegoAhorcado();
             Basketball basketball = new Basketball();
+            Cartas juegoCartas = new Cartas();
 
 
             switch (opcionJuego) {
-                case 1:
-                    juego1.juego();
-                    break;
-                case 2:
-                    basketball.inicioBasketball();
-                    break;
-                case 3:
-                    break;
-                case 0:
-                    System.out.println("Nos vemos...");
-                    break;
+                case 1 -> juego1.juego();
+                case 2 -> basketball.inicioBasketball();
+                case 3 -> juegoCartas.inicioCartas();
+                case 0 -> System.out.println("GRACIAS POR JUGAR, Nos vemos...");
             }
 
         } while (opcionJuego != 0);
