@@ -12,7 +12,7 @@ public class Cartas {
         int saldo,apuesta;
        
                     
-         System.out.println("Bienvenidos a basketball");       
+         System.out.println("Bienvenidos a cartas");       
          System.out.println("El casino presenta dos cartas y si la siguiente carta que salga se encuentre entre el valor de las dos cartas el jugador gana la apuesta.");
          System.out.println("Ingrese dinero de entrada ");
          saldo = scanner.nextInt(); 
