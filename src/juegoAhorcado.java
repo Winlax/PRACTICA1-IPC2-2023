@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class juegoAhorcado {
 
     public void juego(){
-        final int INTENTOS_TOTALES = 7;
+        final int INTENTOS_TOTALES = 12;
         int intentosJugador = 0;
         int aciertosJugador = 0;
 
@@ -61,10 +61,14 @@ public class juegoAhorcado {
                 imprimirOcultar(respuestasIngresadas);
             } else {
                 System.out.print(" :• :c :C HAS PERDIDO, LA PALABRA ERA -> ");
-                for (int x = 0; x<copia.length)
+                for (int x = 0; x<copia.length;x++) {
+                    System.out.print(copia[x] + " ");
+                }
             }
-
-        }
+            intentosJugador = 0;
+            aciertosJugador = 0;
+            Respuesta = pregunta("\n\nQuieres volver a jugar?",teclado);
+        } while (Respuesta != 'n');
 
 
     }
@@ -80,7 +84,18 @@ public class juegoAhorcado {
 
     private static void imprimirOcultar(char[] respuestasIngresadas) {
         for ( int x = 0; x < respuestasIngresadas.length; x++) {
-            System.out.println(respuestasIngresadas[x] + " ");        }
+            System.out.print(respuestasIngresadas[x] + " ");        }
+    }
+
+    public static char pregunta(String men, Scanner teclado) {
+        char resp;
+        System.out.println(men + " (s/n)");
+        resp = teclado.next().toLowerCase().charAt(0);
+        while (resp != 's' && resp != 'n') {
+            System.out.println("Error! solo se admite S o N");
+            resp = teclado.next().toLowerCase().charAt(0);
+        }
+        return resp;
     }
 
 

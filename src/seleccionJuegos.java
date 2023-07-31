@@ -15,36 +15,46 @@ public class seleccionJuegos {
                          (2) BASKETBALL Oo.
                          (3) JUEGO DE CARTAS [J][Q][K]
                          
+                         (0) SALIR
+                         
                          Ingrese numero del juego a jugar ->\s""";
         String mensaje2 = "### ERROR - Ingrese un numero valido...";
         String mensaje3 = "### ERROR - Debe ingresar una de las opciones -> ";
 
-        print(mensaje1);
+        do {
+            print(mensaje1);
 
-        do try {
-            activador = false;
-            opcionJuego = teclado.nextInt();
+            do try {
+                activador = false;
+                opcionJuego = teclado.nextInt();
 
-            if (opcionJuego < 1 || opcionJuego > 3) {
-                print(mensaje3);
+                if (opcionJuego < 0 || opcionJuego > 3) {
+                    print(mensaje3);
+                    activador = true;
+                }
+
+            } catch (InputMismatchException e) {
+                System.out.print(mensaje2 +
+                        "\nIngrese numero del juego a jugar -> ");
+                teclado.next();
                 activador = true;
+            } while (activador);
+
+            juegoAhorcado juego1 = new juegoAhorcado();
+
+            switch (opcionJuego) {
+                case 1:
+                    juego1.juego();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 0:
+                    System.out.println("Nos vemos...");
+                    break;
             }
-
-        } catch (InputMismatchException e) {
-            System.out.print(mensaje2 +
-                    "\nIngrese numero del juego a jugar -> ");
-            teclado.next();
-            activador = true;
-        } while (activador);
-
-        switch (opcionJuego) {
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-        }
+        } while (opcionJuego != 0);
 
     }
 
