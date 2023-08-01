@@ -7,6 +7,9 @@ public class juegoAhorcado {
         final int INTENTOS_TOTALES = 12;
         int intentosJugador = 0;
         int aciertosJugador = 0;
+        boolean comprobador = false;
+        int contadorFallos = INTENTOS_TOTALES;
+        int contadorLetras = 0;
 
         Scanner teclado = new Scanner(System.in);
         teclado.useDelimiter("\n");
@@ -52,12 +55,42 @@ public class juegoAhorcado {
                         aciertosJugador++;
                     }
                 }
+                /*
+                while (contadorLetras == descomponer.length-1){
+                    switch (contadorFallos) {
+                        case 1:
+                            System.out.print("\n |--v--");
+                        case 2:
+                            System.out.print("\n °  |  ");
+                        case 3:
+                            System.out.print("\n/V/ |  ");
+                        case 4:
+                            System.out.print("\n |  |  ");
+                        case 5:
+                            System.out.print("\n/ / |  ");
+                        case 6:
+                            System.out.print("\n    |  ");
+                        case 7:
+                            System.out.print("\n    |  ");
+                        case 8:
+                            System.out.print("\n    |  ");
+                        case 9:
+                            System.out.print("\n    |  ");
+                        case 10:
+                            System.out.print("\n    |  ");
+                        case 11:
+                            System.out.print("\n    |  ");
+                        case 12:
+                            System.out.print("\n____|__");
+                            break;
+                    }
+                    
+                }*/
 
-                intentosJugador++;
             }
 
             if (aciertosJugador == respuestasIngresadas.length) {
-                System.out.println(" <3 <3 <3 FELICIDADES!!! HAS ACERTADO LA PALABRA");
+                System.out.println("\n <3 <3 <3 FELICIDADES!!! HAS ACERTADO LA PALABRA");
                 imprimirOcultar(respuestasIngresadas);
             } else {
                 System.out.print(" :• :c :C HAS PERDIDO, LA PALABRA ERA -> ");
