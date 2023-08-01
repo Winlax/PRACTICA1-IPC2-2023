@@ -8,7 +8,6 @@ public class juegoAhorcado {
         int intentosJugador = 0;
         int aciertosJugador = 0;
         boolean comprobador = false;
-        int contadorFallos = INTENTOS_TOTALES;
         int contadorLetras = 0;
 
         Scanner teclado = new Scanner(System.in);
@@ -55,6 +54,8 @@ public class juegoAhorcado {
                         aciertosJugador++;
                     }
                 }
+                intentosJugador++;
+
                 /*
                 while (contadorLetras == descomponer.length-1){
                     switch (contadorFallos) {
@@ -121,14 +122,14 @@ public class juegoAhorcado {
     }
 
     public static char pregunta(String men, Scanner teclado) {
-        char resp;
+        char respuesta;
         System.out.println(men + " (s/n)");
-        resp = teclado.next().toLowerCase().charAt(0);
-        while (resp != 's' && resp != 'n') {
+        respuesta = teclado.next().toLowerCase().charAt(0);
+        while (respuesta != 's' && respuesta != 'n') {
             System.out.println("Error! solo se admite S o N");
-            resp = teclado.next().toLowerCase().charAt(0);
+            respuesta = teclado.next().toLowerCase().charAt(0);
         }
-        return resp;
+        return respuesta;
     }
 
 
